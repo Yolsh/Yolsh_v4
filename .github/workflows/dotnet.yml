@@ -50,3 +50,8 @@ jobs:
 
       - name: Publish
         run: dotnet publish -c Release -o /var/www/Yolsh_v4
+
+      - name: Restart the app
+        run: |
+          export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          systemctl --user restart sample-app.service
