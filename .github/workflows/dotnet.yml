@@ -41,7 +41,7 @@ jobs:
         port: ${{ secrets.PORT }}
         key: ${{ secrets.SSHKEY }}
         source: "."
-        target: "/var/www/yolsh"
+        target: "~/www/yolsh"
         
     - name: Execute start command
       uses: appleboy/ssh-action@master
