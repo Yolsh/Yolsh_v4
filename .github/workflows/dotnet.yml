@@ -8,8 +8,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,21 +27,26 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  deploy:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        dotnet: ["7.0.x"]
+
+    steps:
+      - uses: actions/checkout@v2
       
-    - uses: twingate/github-action@v1
-      with:
-        service-key: ${{ secrets.TWINGATE_SERVICE_KEY }}
-        
-    - name: Execute start command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        port: ${{ secrets.PORT }}
-        key: ${{ secrets.SSHKEY }}
-        script: |
-            cd ~/www/Yolsh_v4
-            git pull
-            dotnet publish --configuration Release
-            cd ./Yolsh_v4/Server/bin/Release/net7.0
-            dotnet Yolsh_v4.Server.dll
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish -c Release -o /var/www/Yolsh_v4
