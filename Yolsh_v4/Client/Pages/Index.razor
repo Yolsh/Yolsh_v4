@@ -1,0 +1,106 @@
+﻿@page "/"
+@using Yolsh_v4.Client.Components.CLI
+@using Yolsh_v4.Client.Components.Commands
+
+<PageTitle>Yolsh.co.uk</PageTitle>
+
+<main>
+    <div class="space">
+        <div class="star-canvas">
+            @foreach (StarProperties Star in CreateStars())
+            {
+                <a @key=Star.UID style="@($"top: {Star.Top}vw; left: {Star.Left}vw; height: {Star.Size}px; border-radius: {Star.Size}px; opacity: {Star.Brightness};")" class="star" />
+            }
+        </div>
+        <img src="./Resources/satellite3.svg" class="satellite3">
+        <img src="./Resources/satellite2.svg" class="satellite2">
+        <img src="./Resources/satellite1.svg" class="satellite1">
+        <img src="./Resources/jupiter.svg" class="planet">
+        <div class="wave-wrapper">
+            <div class="title-positioner">
+                <h1 class="title2">Hi, I'm Yolsh</h1>
+            </div>
+            <img src="./Resources/Waves1.svg" class="waves space-wave">
+        </div>
+    </div>
+    <div class="room">
+        <div class="console-wrapper">
+            <img src="./Resources/Waves2.svg" class="waves">
+            <BlazorConsole @ref="coms" Name="Yolsh Terminal" Description="This is the developer console for Yolsh.co.uk" Description2="if you feel like you shouldn't be here, you shouldn't, go away"/>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setTimeout(function () {
+                        entry.target.classList.remove('hidden');
+                        entry.target.classList.add('typing-anim');
+                    }, 2000);
+                } else {
+                    entry.target.classList.add('hidden')
+                    entry.target.classList.remove('typing-anim');
+                }
+            });
+        });
+
+        const title = document.querySelector('.title2')
+        observer.observe(title)
+    </script>
+</main>
+
+@code {
+    BlazorConsole coms = new BlazorConsole();
+
+    private const int MaxStars = 450;
+    private const int MaxCraters = 50;
+    private double PlanetRadius = 0;
+
+    private struct StarProperties
+    {
+        public int Size;
+        public double Brightness;
+        public int Top;
+        public int Left;
+        public int UID;
+    }
+
+    private struct CraterProperties
+    {
+        public int Size;
+        public int UID;
+    }
+
+    private StarProperties[] CreateStars()
+    {
+        Random rand = new Random();
+        StarProperties[] AllStars = new StarProperties[MaxStars];
+        for (int i = 0; i < MaxStars; i++)
+        {
+            StarProperties Star = new StarProperties();
+            Star.Size = rand.Next(1, 5);
+            Star.Top = rand.Next(2, 105);
+            Star.Left = rand.Next(2, 98);
+            Star.UID = i;
+            Star.Brightness = (double) (100 - Star.Top) / 150;
+            AllStars[i] = Star;
+        }
+        return AllStars;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //create instances of all the commands
+            EchoCommand Echo = new EchoCommand("echo");
+            HelpCommand Help = new HelpCommand("help");
+
+            Help.addComToHelpList(Help);
+            Help.addComToHelpList(Echo);
+
+            coms.AddCommand(Help);
+            coms.AddCommand(Echo);
+        }
+    }
+}

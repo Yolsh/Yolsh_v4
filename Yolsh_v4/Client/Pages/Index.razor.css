@@ -1,0 +1,161 @@
+﻿main {
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.space {
+    background: rgb(39,139,143);
+    background: radial-gradient(circle at 50vw calc(50rem + 50vw), rgba(39,139,143,1) 0%, rgba(23,44,54,1) 35%, rgba(0,0,0,1) 100%);
+    padding-bottom: 0;
+}
+
+.planet {
+    height: 100vw;
+    aspect-ratio: 1/1;
+    position: relative;
+    z-index: 1;
+    animation: planet-spin 25s linear infinite;
+}
+
+@keyframes planet-spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.star-canvas {
+    height: 50rem;
+    overflow-x: hidden;
+}
+
+.star {
+    position: absolute;
+    aspect-ratio: 1/1;
+    background-color: azure;
+    z-index: 0;
+}
+
+.satellite1 {
+    height: 2.5vw;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: calc(50rem + 50vw);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    animation: orbit1 12s linear infinite;
+}
+
+.satellite2 {
+    height: 2.5vw;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: calc(50rem + 50vw);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    z-index: 3;
+    animation: orbit2 15s linear infinite;
+}
+
+.satellite3 {
+    height: 6vw;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: calc(50rem + 50vw);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    animation: orbit3 19s linear infinite;
+}
+
+@keyframes orbit1 {
+    0% {
+        transform: rotate(-20deg) translateY(65vw) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(340deg) translateY(65vw) rotate(-360deg);
+    }
+}
+
+@keyframes orbit2 {
+    0% {
+        transform: rotate(90deg) translateY(72vw) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(450deg) translateY(72vw) rotate(-360deg);
+    }
+}
+
+@keyframes orbit3 {
+    0% {
+        transform: rotate(70deg) translateY(86vw) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(430deg) translateY(86vw) rotate(-360deg);
+    }
+}
+
+.room {
+    background: #273B49;
+}
+
+.waves {
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin: 0;
+}
+
+.wave-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.console-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.title-positioner {
+    display: inline-block;
+    position: absolute;
+    top: calc(50rem + 100vw + (100% * 9/16)/3);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title2 {
+    position: relative;
+    font-size: 5rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.typing-anim {
+    color: azure;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 1.5s steps(13), cursor .4s step-end infinite alternate;
+}
+
+.hidden {
+    color: transparent;
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
