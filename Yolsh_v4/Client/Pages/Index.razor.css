@@ -129,7 +129,7 @@
     transform: translateX(-50%);
 }
 
-.title2 {
+#title2 {
     position: relative;
     font-size: 5rem;
     font-family: 'JetBrains Mono', monospace;

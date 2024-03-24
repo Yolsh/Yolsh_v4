@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
 @using Yolsh_v4.Client.Components.CLI
 @using Yolsh_v4.Client.Components.Commands
 
@@ -18,7 +19,7 @@
         <img src="./Resources/jupiter.svg" class="planet">
         <div class="wave-wrapper">
             <div class="title-positioner">
-                <h1 class="title2">Hi, I'm Yolsh</h1>
+                <h1 id="title2">Hi, I'm Yolsh</h1>
             </div>
             <img src="./Resources/Waves1.svg" class="waves space-wave">
         </div>
@@ -29,28 +30,11 @@
             <BlazorConsole @ref="coms" Name="Yolsh Terminal" Description="This is the developer console for Yolsh.co.uk" Description2="if you feel like you shouldn't be here, you shouldn't, go away"/>
         </div>
     </div>
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setTimeout(function () {
-                        entry.target.classList.remove('hidden');
-                        entry.target.classList.add('typing-anim');
-                    }, 2000);
-                } else {
-                    entry.target.classList.add('hidden')
-                    entry.target.classList.remove('typing-anim');
-                }
-            });
-        });
-
-        const title = document.querySelector('.title2')
-        observer.observe(title)
-    </script>
 </main>
 
 @code {
     BlazorConsole coms = new BlazorConsole();
+    private IJSObjectReference? module;
 
     private const int MaxStars = 450;
     private const int MaxCraters = 50;
@@ -101,6 +85,16 @@
 
             coms.AddCommand(Help);
             coms.AddCommand(Echo);
+        }
+    }
+
+    //render the js for the title animation
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
+            await module.InvokeVoidAsync("observeTitle");
         }
     }
 }
