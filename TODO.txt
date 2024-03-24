@@ -6,8 +6,9 @@ Importance Level:
 
 TO DO:
 	H - Update the README
-	H - Change the tooling server-side to work on dotnet 8.0
-	H - Sort out the Title screen so that it actually plays
+	- H - Change the tooling server-side to work on dotnet 8.0
+	- H - Sort out the Title screen so that it actually plays
+	M - Change the loding screen
 	M - Add more commands
 	L - Add the ability to call the github api for a psuedo file-system
 	L - Add the ability to run projects on the terminal through Async processes and SignalR

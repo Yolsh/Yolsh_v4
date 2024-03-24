@@ -28,6 +28,14 @@
         </EditForm>
     </div>
     <div style="height: 100px;" />
+    <script>
+        function scrollDown() {
+            if (event.key === 'Enter') {
+                const scroll = document.querySelector("html");
+                scroll.scrollTop = scroll.scrollHeight;
+            }
+        }
+    </script>
 </div>
 
 @code {

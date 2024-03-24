@@ -22,32 +22,6 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-    <script>
-        function scrollDown() {
-            if (event.key === 'Enter') {
-                const scroll = document.querySelector("html");
-                scroll.scrollTop = scroll.scrollHeight;
-            }
-        }
-    </script>
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setTimeout(function () {
-                        entry.target.classList.remove('hidden');
-                        entry.target.classList.add('typing-anim');
-                    }, 2000);
-                } else {
-                    entry.target.classList.add('hidden')
-                    entry.target.classList.remove('typing-anim');
-                }
-            });
-        });
-
-        const title = document.querySelector('.title2')
-        observer.observe(title)
-    </script>
 </body>
 
 </html>
