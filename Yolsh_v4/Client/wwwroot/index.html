@@ -30,6 +30,24 @@
             }
         }
     </script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setTimeout(function () {
+                        entry.target.classList.remove('hidden');
+                        entry.target.classList.add('typing-anim');
+                    }, 2000);
+                } else {
+                    entry.target.classList.add('hidden')
+                    entry.target.classList.remove('typing-anim');
+                }
+            });
+        });
+
+        const title = document.querySelector('.title2')
+        observer.observe(title)
+    </script>
 </body>
 
 </html>
