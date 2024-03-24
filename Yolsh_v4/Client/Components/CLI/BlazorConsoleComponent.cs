@@ -35,7 +35,6 @@ namespace Yolsh_v4.Client.Components.CLI
                 Input input = context.Model as Input;
                 if (input != null)
                 {
-                    Console.WriteLine(input);
                     if (input.Text.ToLower() == "clear" || input.Text.ToLower() == "clr")
                     {
                         Output = string.Empty;
