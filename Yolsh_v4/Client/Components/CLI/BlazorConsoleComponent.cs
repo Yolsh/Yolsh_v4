@@ -7,7 +7,7 @@ namespace Yolsh_v4.Client.Components.CLI
     public class BlazorConsoleComponent : ComponentBase
     {
         private List<BaseCommand> Commands { get; set; }
-        protected string Disabled { get; set; } = null;
+        protected string? Disabled { get; set; } = null;
 
         protected string Output = string.Empty;
         protected string Placeholder { get; set; } = "Enter a command, type 'help' for avaliable commands.";
@@ -32,7 +32,7 @@ namespace Yolsh_v4.Client.Components.CLI
         {
             if (context.Model != null)
             {
-                Input input = context.Model as Input;
+                Input? input = context.Model as Input;
                 if (input != null)
                 {
                     if (input.Text.ToLower() == "clear" || input.Text.ToLower() == "clr")

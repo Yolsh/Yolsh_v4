@@ -8,7 +8,7 @@
 
     public abstract class BaseCommand
     {
-        public struct argument
+        public struct Argument
         {
             public string arg;
             public int group;
