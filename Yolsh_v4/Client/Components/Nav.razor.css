@@ -16,6 +16,12 @@
     font-size: 4em;
 }
 
+@media only screen and (max-width: 450px) {
+    #nav-title {
+        font-size: 6.5em;
+    }
+}
+
 header li {
     list-style: none;
     display: inline-block;

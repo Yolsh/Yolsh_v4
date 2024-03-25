@@ -110,6 +110,7 @@
 }
 
 .wave-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -124,9 +125,9 @@
 .title-positioner {
     display: inline-block;
     position: absolute;
-    top: calc(50rem + 100vw + (100% * 9/16)/3);
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -110%);
 }
 
 #title2 {
@@ -135,12 +136,16 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+.typing-anim,
+.hidden {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+
 .typing-anim {
     color: azure;
     border-right: 5px solid;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
     animation: typing 1.5s steps(13), cursor .4s step-end infinite alternate;
 }
 
