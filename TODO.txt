@@ -5,7 +5,7 @@ Importance Level:
 	- H: High priority
 
 TO DO:
-	H - support for mobile devices that doesnt look crap
+	H - support for mobile devices that doesnt look crap --
 	- H - Update the README
 	- H - Change the tooling server-side to work on dotnet 8.0
 	- H - Sort out the Title screen so that it actually plays

@@ -21,6 +21,61 @@
 @media only screen and (max-width: 450px) {
     .planet {
         height: 300vw;
+        left: -100vw;
+        top: -50vw;
+    }
+
+    .satellite1,
+    .satellite2,
+    .satellite3 {
+        left: 50%;
+        top: calc(50rem + 50vw);
+    }
+
+    .satellite1 {
+        height: 3.75em;
+        animation: orbit1 10s linear infinite;
+    }
+
+    .satellite2 {
+        transform: rotate(90deg);
+        animation: orbit2 15s linear infinite;
+        height: 3.55em;
+    }
+
+    .satellite3 {
+        height: 6em;
+        animation: orbit3 10s linear infinite;
+    }
+
+    @keyframes orbit1 {
+        0% {
+            transform: rotate(-20deg) translateY(195vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(340deg) translateY(195vw) rotate(-360deg);
+        }
+    }
+
+    @keyframes orbit2 {
+        0% {
+            transform: rotate(90deg) translateY(176vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(450deg) translateY(176vw) rotate(-360deg);
+        }
+    }
+
+    @keyframes orbit3 {
+        0% {
+            transform: rotate(70deg) translateY(240vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(430deg) translateY(240vw) rotate(-360deg);
+        }
     }
 }
 
@@ -42,62 +97,69 @@
     z-index: 0;
 }
 
+@media only screen and (min-width: 800px) {
+    .satellite1,
+    .satellite2,
+    .satellite3 {
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: calc(50rem + 50vw);
+    }
+
+    .satellite1 {
+        height: 2.5vw;
+        animation: orbit1 12s linear infinite;
+    }
+
+    .satellite2 {
+        height: 2.5vw;
+        transform: rotate(90deg);
+        animation: orbit2 15s linear infinite;
+    }
+
+    .satellite3 {
+        height: 6vw;
+        animation: orbit3 19s linear infinite;
+    }
+
+    @keyframes orbit1 {
+        0% {
+            transform: rotate(-20deg) translateY(65vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(340deg) translateY(65vw) rotate(-360deg);
+        }
+    }
+
+    @keyframes orbit2 {
+        0% {
+            transform: rotate(90deg) translateY(72vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(450deg) translateY(72vw) rotate(-360deg);
+        }
+    }
+
+    @keyframes orbit3 {
+        0% {
+            transform: rotate(70deg) translateY(86vw) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(430deg) translateY(86vw) rotate(-360deg);
+        }
+    }
+}
+
 .satellite1,
 .satellite2,
 .satellite3 {
     z-index: 3;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: calc(50rem + 50vw);
     position: absolute;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-}
-
-.satellite1 {
-    height: 2.5vw;
-    animation: orbit1 12s linear infinite;
-}
-
-.satellite2 {
-    height: 2.5vw;
-    transform: rotate(90deg);
-    animation: orbit2 15s linear infinite;
-}
-
-.satellite3 {
-    height: 6vw;
-    animation: orbit3 19s linear infinite;
-}
-
-@keyframes orbit1 {
-    0% {
-        transform: rotate(-20deg) translateY(65vw) rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(340deg) translateY(65vw) rotate(-360deg);
-    }
-}
-
-@keyframes orbit2 {
-    0% {
-        transform: rotate(90deg) translateY(72vw) rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(450deg) translateY(72vw) rotate(-360deg);
-    }
-}
-
-@keyframes orbit3 {
-    0% {
-        transform: rotate(70deg) translateY(86vw) rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(430deg) translateY(86vw) rotate(-360deg);
-    }
 }
 
 .room {
