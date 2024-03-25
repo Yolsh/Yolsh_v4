@@ -3,9 +3,10 @@
     z-index: 100;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: 100vw;
     align-items: center;
     padding: 5px 0 0 20px;
+    overflow: hidden;
 }
 
 #nav-title {

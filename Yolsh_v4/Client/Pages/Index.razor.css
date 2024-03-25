@@ -18,6 +18,12 @@
     animation: planet-spin 25s linear infinite;
 }
 
+@media only screen and (max-width: 450px) {
+    .planet {
+        height: 300vw;
+    }
+}
+
 @keyframes planet-spin {
     100% {
         transform: rotate(360deg);
@@ -36,36 +42,31 @@
     z-index: 0;
 }
 
+.satellite1,
+.satellite2,
+.satellite3 {
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: calc(50rem + 50vw);
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
 .satellite1 {
     height: 2.5vw;
-    aspect-ratio: 1 / 1;
-    position: absolute;
-    top: calc(50rem + 50vw);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
     animation: orbit1 12s linear infinite;
 }
 
 .satellite2 {
     height: 2.5vw;
-    aspect-ratio: 1 / 1;
-    position: absolute;
-    top: calc(50rem + 50vw);
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(90deg);
-    z-index: 3;
+    transform: rotate(90deg);
     animation: orbit2 15s linear infinite;
 }
 
 .satellite3 {
     height: 6vw;
-    aspect-ratio: 1 / 1;
-    position: absolute;
-    top: calc(50rem + 50vw);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
     animation: orbit3 19s linear infinite;
 }
 
