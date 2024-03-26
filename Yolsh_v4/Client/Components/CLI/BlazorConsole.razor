@@ -46,7 +46,7 @@
     {
         if (module is not null)
         {
-            await module.InvokeVoidAsync("scrollDown", e);
+            await module.InvokeVoidAsync("scrollDown", e.Key);
         }
     }
 }

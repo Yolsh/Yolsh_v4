@@ -1,7 +1,6 @@
 ﻿main {
     background-color: black;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .space {
@@ -15,6 +14,7 @@
     aspect-ratio: 1/1;
     position: relative;
     z-index: 1;
+    overflow: hidden;
     animation: planet-spin 25s linear infinite;
 }
 
@@ -77,6 +77,12 @@
             transform: rotate(430deg) translateY(240vw) rotate(-360deg);
         }
     }
+
+    #title2 {
+        position: relative;
+        font-size: 2em;
+        font-family: 'JetBrains Mono', monospace;
+    }
 }
 
 @keyframes planet-spin {
@@ -97,7 +103,7 @@
     z-index: 0;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 451px) {
     .satellite1,
     .satellite2,
     .satellite3 {
@@ -151,6 +157,12 @@
             transform: rotate(430deg) translateY(86vw) rotate(-360deg);
         }
     }
+
+    #title2 {
+        position: relative;
+        font-size: 5rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
 }
 
 .satellite1,
@@ -191,12 +203,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -110%);
-}
-
-#title2 {
-    position: relative;
-    font-size: 5rem;
-    font-family: 'JetBrains Mono', monospace;
 }
 
 .typing-anim,

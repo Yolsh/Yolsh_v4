@@ -1,5 +1,6 @@
 export function scrollDown(e) {
-    if (e.key === 'Enter') {
+    if (e === 'Enter') {
+        console.log(e);
         const scroll = document.querySelector("html");
         scroll.scrollTop = scroll.scrollHeight;
     }

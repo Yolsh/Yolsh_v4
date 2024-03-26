@@ -3,11 +3,11 @@ export function observeTitle() {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 setTimeout(function () {
-                    entry.target.classList.remove('hidden');
                     entry.target.classList.add('typing-anim');
+                    entry.target.classList.remove('hidden');
                 }, 2000);
             } else {
-                entry.target.classList.add('hidden')
+                entry.target.classList.add('hidden');
                 entry.target.classList.remove('typing-anim');
             }
         });

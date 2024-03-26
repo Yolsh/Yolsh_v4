@@ -10,7 +10,7 @@ TO DO:
 	- H - Change the tooling server-side to work on dotnet 8.0
 	- H - Sort out the Title screen so that it actually plays
 	- M - sort out all the small warnings
-	M - change the scrolling code to work better
+	- M - change the scrolling code to work better
 	M - add all the tooling for playwright E-E testing
 	M - Change the loding screen
 	M - Add more commands
